@@ -49,12 +49,12 @@
 /* #region main  */
 #site_main {
     background-image: url('./img/cork.png');
-    background-size: cover;
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
 
 .custom_card {
+    display: inline-block;
     position: relative;
     padding: 1.5rem;
     background-color: var(--alb-lighter);
