@@ -7,19 +7,25 @@ fetch(postUrlEndpoint)
     .then(res => res.json())
     .then(posts => {
         console.log(posts);
-        
+        renderPosts (posts, rowEl);
     })
 
 
 
- 
+function renderPosts (posts, container) {
+    container.innerHTML = '';
+    posts.forEach(post => {
+        const markup = getMarkup(post);
+        container.innerHTML += markup;
+    });
+}
 
 
 
 function getMarkup(post) {
     return `    <div class="col-12 col-md-6 col-lg-4">
                     <div class="custom_card">
-                        <img src="" alt="pin" class="pin">
+                        <img src="./img/pin.svg" alt="pin" class="pin">
                         <div class="card-header">
                             <img src="${post.url}" alt="main img" class="card_img">
                         </div>
