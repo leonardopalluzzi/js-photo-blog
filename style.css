@@ -4,8 +4,23 @@
     box-sizing: border-box;
 }
 
+.edu-tas-beginner-font {
+    font-family: "Edu TAS Beginner", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+
 .debug{
     *{
         border: 1px dashed black;
     }
+}
+
+.title{
+    font-size: 6rem;
+}
+
+#site_header{
+    background-image: url('./img/wall.png');
 }
