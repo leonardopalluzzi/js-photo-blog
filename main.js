@@ -23,6 +23,13 @@ function renderPosts (posts, container) {
         const markup = getMarkup(post);
         container.innerHTML += markup;
     });
+
+    // classic for loop implementation
+   /* for(let i = 0; i < posts.length; i++){
+        const post = posts[i];
+        const markup = getMarkup(post);
+        container.innerHTML += markup
+    }*/
 }
 
 
@@ -47,3 +54,4 @@ function getMarkup(post) {
                     </div>
                 </div>`
 }
+
