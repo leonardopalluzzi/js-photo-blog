@@ -54,4 +54,3 @@ function getMarkup(post) {
                     </div>
                 </div>`
 }
-
