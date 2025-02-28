@@ -9,6 +9,7 @@ fetch(postUrlEndpoint)
         console.log(posts);
         renderPosts (posts, rowEl);
     })
+    .catch(error => console.error(error));
 
 
 /**
