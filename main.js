@@ -11,7 +11,12 @@ fetch(postUrlEndpoint)
     })
 
 
-
+/**
+ * renders the cards on page and insert the information taken from the API 
+ * @param {array} posts 
+ * @param {HTML} container 
+ * @return {viod}
+ */
 function renderPosts (posts, container) {
     container.innerHTML = '';
     posts.forEach(post => {
@@ -21,7 +26,11 @@ function renderPosts (posts, container) {
 }
 
 
-
+/**
+ * create the markup for the cards
+ * @param {object} post 
+ * @returns {string} return a string containing the card's markup
+ */
 function getMarkup(post) {
     return `    <div class="col-12 col-md-6 col-lg-4">
                     <div class="custom_card">
