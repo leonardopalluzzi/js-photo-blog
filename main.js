@@ -1,6 +1,8 @@
 //recover nodes from dom
 const rowEl = document.querySelector('.row');
+const contentEl = document.querySelector('.row_2');
 const postUrlEndpoint = 'https://lanciweb.github.io/demo/api/pictures/';
+const overlayEl = document.getElementById('overlay');
 
 
 fetch(postUrlEndpoint)
@@ -18,11 +20,11 @@ fetch(postUrlEndpoint)
  * @param {HTML} container 
  * @return {viod}
  */
-function renderPosts (posts, container) {
-    container.innerHTML = '';
+function renderPosts (posts) {
+    rowEl.innerHTML = '';
     posts.forEach(post => {
         const markup = getMarkup(post);
-        container.innerHTML += markup;
+        rowEl.innerHTML += markup;
     });
 
     // classic for loop implementation
