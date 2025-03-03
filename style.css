@@ -108,6 +108,10 @@
     z-index: 10;
 }
 
+.overlay_img{
+    max-width: 70%;
+}
+
 
 
 /* #endregion overlay  */

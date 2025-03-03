@@ -3,6 +3,7 @@ const rowEl = document.querySelector('.row');
 const postUrlEndpoint = 'https://lanciweb.github.io/demo/api/pictures/';
 const overlayEl = document.getElementById('overlay');
 const btnEl = document.querySelector('.btn');
+const overlayImgEl = document.querySelector('.overlay_img');
 
 
 fetch(postUrlEndpoint)
@@ -12,19 +13,29 @@ fetch(postUrlEndpoint)
         renderPosts (posts, rowEl);
 
 
-
+        //click on card
         const cardEl = document.querySelectorAll('.custom_card');
         console.log(cardEl);
-        cardEl.forEach(card =>{
+        cardEl.forEach((card, i) =>{
             card.addEventListener('click', () => {
+                
+                // recover current img
+                const currentImg = document.getElementById(`img_${i + 1}`);
+                
+                // place the img into the overlay
+                overlayImgEl.src = currentImg.src;
+
+                // show the overlay
                 overlayEl.classList.add('d-block');
             })
         })
 
-
+        // close overlay
         btnEl.addEventListener('click', ()=> {
             overlayEl.classList.remove('d-block');
         })
+
+
     })
     .catch(error => console.error(error));
 
@@ -58,10 +69,10 @@ function renderPosts (posts) {
  */
 function getMarkup(post) {
     return `    <div class="col-12 col-md-6 col-lg-4">
-                    <div class="custom_card" id="card_${post.id}">
+                    <div class="custom_card">
                         <img src="./img/pin.svg" alt="pin" class="pin">
                         <div class="card-header">
-                            <img src="${post.url}" alt="main img" class="card_img">
+                            <img src="${post.url}" alt="main img" class="card_img" id="img_${post.id}">
                         </div>
                         <div class="card-body">
                             <p class="photo_data sometype-mono-font">${post.date}</p>
