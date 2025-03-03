@@ -1,6 +1,5 @@
 //recover nodes from dom
 const rowEl = document.querySelector('.row');
-const contentEl = document.querySelector('.row_2');
 const postUrlEndpoint = 'https://lanciweb.github.io/demo/api/pictures/';
 const overlayEl = document.getElementById('overlay');
 
@@ -10,6 +9,16 @@ fetch(postUrlEndpoint)
     .then(posts => {
         console.log(posts);
         renderPosts (posts, rowEl);
+
+
+        
+        const cardEl = document.querySelectorAll('.custom_card');
+        console.log(cardEl);
+        cardEl.forEach(card =>{
+            card.addEventListener('click', () => {
+                console.log('ciao');
+            })
+        })
     })
     .catch(error => console.error(error));
 
@@ -43,7 +52,7 @@ function renderPosts (posts) {
  */
 function getMarkup(post) {
     return `    <div class="col-12 col-md-6 col-lg-4">
-                    <div class="custom_card">
+                    <div class="custom_card" id="card_${post.id}">
                         <img src="./img/pin.svg" alt="pin" class="pin">
                         <div class="card-header">
                             <img src="${post.url}" alt="main img" class="card_img">
