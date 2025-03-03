@@ -80,6 +80,7 @@
         top: 2%;
         left: 50%;
         transform: translate(-50%, -50%);
+        transition: 1s;
     }
     .photo_data{
         margin-bottom: 0;
@@ -93,9 +94,14 @@
     .custom_card:hover{
     cursor: pointer;
     z-index: 9;
-    transform: rotate(-10deg) scale(1.1);
+    transform: rotate(10deg) scale(1.1);
     box-shadow:  1px 0px 15px rgba(0, 0, 0, 0.911);
+    .pin{
+        display: none;
     }
+}
+
+    
 }
 
 .container_custom{
