@@ -13,9 +13,6 @@ fetch(postUrlEndpoint)
         renderPosts(posts, rowEl);
         toggleOveraly();
 
-
-
-
     })
     .catch(error => console.error(error));
 
@@ -67,6 +64,7 @@ function getMarkup(post) {
 
 /**
  * toggle overlay visibility, recover and insert current img src
+ * @return {void}
  */
 function toggleOveraly() {
     //click on card
@@ -85,6 +83,38 @@ function toggleOveraly() {
             overlayEl.classList.add('d-block');
         })
     })
+
+    // close overlay
+    btnEl.addEventListener('click', () => {
+        overlayEl.classList.remove('d-block');
+    })
+}
+
+
+/**
+ * toggle overlay visibility, recover and insert current img src. uses for loop
+ * @return {void}
+ */
+function toggleOveralyFor() {
+    //click on card
+    const cardEl = document.querySelectorAll('.custom_card');
+    console.log(cardEl);
+    for (let i = 0; i < cardEl.length; i++) {
+        const currentCard = cardEl[i];
+        currentCard.addEventListener('click', () => {
+
+            // recover current img
+            const currentImg = document.getElementById(`img_${i + 1}`);
+
+            // place the img into the overlay
+            overlayImgEl.src = currentImg.src;
+
+            // show the overlay
+            overlayEl.classList.add('d-block');
+        })
+    }
+
+
 
     // close overlay
     btnEl.addEventListener('click', () => {
