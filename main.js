@@ -2,6 +2,7 @@
 const rowEl = document.querySelector('.row');
 const postUrlEndpoint = 'https://lanciweb.github.io/demo/api/pictures/';
 const overlayEl = document.getElementById('overlay');
+const btnEl = document.querySelector('.btn');
 
 
 fetch(postUrlEndpoint)
@@ -11,13 +12,18 @@ fetch(postUrlEndpoint)
         renderPosts (posts, rowEl);
 
 
-        
+
         const cardEl = document.querySelectorAll('.custom_card');
         console.log(cardEl);
         cardEl.forEach(card =>{
             card.addEventListener('click', () => {
-                console.log('ciao');
+                overlayEl.classList.add('d-block');
             })
+        })
+
+
+        btnEl.addEventListener('click', ()=> {
+            overlayEl.classList.remove('d-block');
         })
     })
     .catch(error => console.error(error));
