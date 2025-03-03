@@ -10,30 +10,10 @@ fetch(postUrlEndpoint)
     .then(res => res.json())
     .then(posts => {
         console.log(posts);
-        renderPosts (posts, rowEl);
+        renderPosts(posts, rowEl);
+        toggleOveraly();
 
 
-        //click on card
-        const cardEl = document.querySelectorAll('.custom_card');
-        console.log(cardEl);
-        cardEl.forEach((card, i) =>{
-            card.addEventListener('click', () => {
-                
-                // recover current img
-                const currentImg = document.getElementById(`img_${i + 1}`);
-                
-                // place the img into the overlay
-                overlayImgEl.src = currentImg.src;
-
-                // show the overlay
-                overlayEl.classList.add('d-block');
-            })
-        })
-
-        // close overlay
-        btnEl.addEventListener('click', ()=> {
-            overlayEl.classList.remove('d-block');
-        })
 
 
     })
@@ -46,7 +26,7 @@ fetch(postUrlEndpoint)
  * @param {HTML} container 
  * @return {viod}
  */
-function renderPosts (posts) {
+function renderPosts(posts) {
     rowEl.innerHTML = '';
     posts.forEach(post => {
         const markup = getMarkup(post);
@@ -54,11 +34,11 @@ function renderPosts (posts) {
     });
 
     // classic for loop implementation
-   /* for(let i = 0; i < posts.length; i++){
-        const post = posts[i];
-        const markup = getMarkup(post);
-        container.innerHTML += markup
-    }*/
+    /* for(let i = 0; i < posts.length; i++){
+         const post = posts[i];
+         const markup = getMarkup(post);
+         container.innerHTML += markup
+     }*/
 }
 
 
@@ -82,4 +62,32 @@ function getMarkup(post) {
                         </div>
                     </div>
                 </div>`
+}
+
+
+/**
+ * toggle overlay visibility, recover and insert current img src
+ */
+function toggleOveraly() {
+    //click on card
+    const cardEl = document.querySelectorAll('.custom_card');
+    console.log(cardEl);
+    cardEl.forEach((card, i) => {
+        card.addEventListener('click', () => {
+
+            // recover current img
+            const currentImg = document.getElementById(`img_${i + 1}`);
+
+            // place the img into the overlay
+            overlayImgEl.src = currentImg.src;
+
+            // show the overlay
+            overlayEl.classList.add('d-block');
+        })
+    })
+
+    // close overlay
+    btnEl.addEventListener('click', () => {
+        overlayEl.classList.remove('d-block');
+    })
 }
